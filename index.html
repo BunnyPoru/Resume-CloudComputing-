@@ -4,73 +4,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kristian Paul Galvez - Resume</title>
+    <!-- Importing a clean, modern font from Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9; /* Light gray background to make the box stand out */
+        /* CSS Variables for easy color theme management */
+        :root {
+            --primary-color: #2563eb; /* Royal Blue */
+            --text-dark: #0f172a;     /* Slate Dark */
+            --text-muted: #475569;    /* Slate Gray */
+            --bg-page: #f8fafc;       /* Off-white background */
+            --bg-card: #ffffff;
+            --border-light: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-muted);
+            line-height: 1.7;
             padding: 40px 20px;
         }
 
         .resume-box {
-            background-color: #ffffff;
-            max-width: 800px; /* Sets the width of the box */
-            margin: 0 auto; /* Centers the box in the middle of the page */
-            padding: 40px;
-            border: 1px solid #ddd; /* Adds a border to create the box */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-            border-radius: 8px; /* Slightly rounds the corners */
+            background-color: var(--bg-card);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 50px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
         }
 
-        h1, h2, h3 {
-            color: #333;
-        }
-
+        /* --- Header Styles --- */
         header {
             display: flex;
             align-items: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .profile-pic {
-            width: 90px;
-            height: 90px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            margin-right: 25px;
+            margin-right: 30px;
             object-fit: cover;
-            border: 2px solid #333;
-            background-color: #eaeaea; /* Placeholder background */
+            border: 3px solid var(--primary-color);
+            background-color: #eaeaea;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
         }
 
         .header-text {
-            text-align: left;
+            flex: 1;
         }
 
         h1 {
-            margin: 0 0 10px 0;
+            color: var(--text-dark);
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
 
-        .header-text p {
-            margin: 5px 0;
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.95rem;
         }
 
-        section {
-            margin-bottom: 25px;
+        .contact-info span {
+            display: flex;
+            align-items: center;
         }
 
-        ul {
-            line-height: 1.6;
-        }
-
-        a {
-            color: #0066cc;
+        .contact-info a {
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
-        a:hover {
+        .contact-info a:hover {
+            color: #1d4ed8;
             text-decoration: underline;
+        }
+
+        /* --- Section Styles --- */
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        /* Creates the cool half-underline effect on headers */
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 50px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background-color: var(--border-light);
+        }
+
+        h3 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* --- List Styles --- */
+        ul {
+            list-style: none; /* Removes default bullets */
+        }
+
+        .standard-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Adds custom colored arrow bullets */
+        .standard-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* --- References Grid Styles --- */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .reference-card {
+            background-color: var(--bg-page);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .reference-card strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .reference-card .role {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .reference-card .contact {
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-pic {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .contact-info {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -78,10 +231,18 @@
     <div class="resume-box">
         <header>
             <img src="2x2.png" alt="Kristian Paul Galvez" class="profile-pic">
-            <h1>KRISTIAN PAUL GALVEZ</h1>
-            <p>0988 Sardonyx St., Mabiga, Mabalacat, Pampanga</p>
-            <p>+639691769664 | <a href="mailto:itspaulgalvez@gmail.com">itspaulgalvez@gmail.com</a></p>
-            <p><a href="https://www.credly.com/users/galvezkristianpaul" target="_blank">Credly Profile</a></p>
+            <div class="header-text">
+                <h1>KRISTIAN PAUL GALVEZ</h1>
+                <div class="contact-info">
+                    <span>0988 Sardonyx St., Mabiga, Mabalacat, Pampanga</span>
+                    <span>|</span>
+                    <span>+639691769664</span>
+                    <span>|</span>
+                    <a href="mailto:itspaulgalvez@gmail.com">itspaulgalvez@gmail.com</a>
+                    <span>|</span>
+                    <a href="https://www.credly.com/users/galvezkristianpaul" target="_blank">Credly Profile</a>
+                </div>
+            </div>
         </header>
 
         <section>
@@ -106,7 +267,7 @@
 
         <section>
             <h2>CERTIFICATIONS & BADGES</h2>
-            <ul>
+            <ul class="standard-list">
                 <li><strong>Linux Essentials:</strong> Issued April 15, 2026.</li>
                 <li><strong>DevNet Associate:</strong> Issued November 24, 2025.</li>
                 <li><strong>Introduction to Cybersecurity:</strong> Issued November 24, 2025.</li>
@@ -115,7 +276,7 @@
 
         <section>
             <h2>TECHNICAL TRAINING & COURSEWORK</h2>
-            <ul>
+            <ul class="standard-list">
                 <li><strong>CCNA: Introduction to Networks:</strong> Completed August 28, 2025.</li>
                 <li><strong>Getting Started with Cisco Packet Tracer:</strong> Completed July 03, 2025.</li>
             </ul>
@@ -123,7 +284,7 @@
 
         <section>
             <h2>TECHNICAL SKILLS</h2>
-            <ul>
+            <ul class="standard-list">
                 <li><strong>Programming Languages:</strong> Python, JavaScript, Java, C++, Ruby</li>
                 <li><strong>Web Development:</strong> HTML, CSS, JavaScript, React, Angular, Node.js</li>
             </ul>
@@ -131,7 +292,7 @@
 
         <section>
             <h2>SOFT SKILLS</h2>
-            <ul>
+            <ul class="standard-list">
                 <li><strong>Communication:</strong> Clear verbal and written communication, able to explain technical concepts simply.</li>
                 <li><strong>Patience & Empathy:</strong> Supports and adapts to various learning speeds.</li>
                 <li><strong>Leadership:</strong> Leads discussions, organizes group work, and motivates peers.</li>
@@ -140,28 +301,38 @@
 
         <section>
             <h2>CHARACTER REFERENCES</h2>
-            <ul>
-                <li>
-                    <strong>Gee Don Mark Padios</strong><br>
-                    Production Specialist, Texas Instruments<br>
-                    0994-836-6915 | <a href="mailto:geemarkcalubia@gmail.com">geemarkcalubia@gmail.com</a>
-                </li>
-                <li>
-                    <strong>Rosel Padios</strong><br>
-                    Quality Control Specialist, Texas Instruments<br>
-                    0975-148-8808 | <a href="mailto:iamnene888@gmail.com">iamnene888@gmail.com</a>
-                </li>
-                <li>
-                    <strong>Ruel D. Bamba</strong><br>
-                    Professional Freelance Programmer<br>
-                    0908-733-0750
-                </li>
-                <li>
-                    <strong>Ellaine Nicole Nufuar</strong><br>
-                    Esports Coordinator / Instructor 3<br>
-                    0929-375-5255 | <a href="mailto:enbongbong@spcf.edu.ph">enbongbong@spcf.edu.ph</a>
-                </li>
-            </ul>
+            <div class="references-grid">
+                <!-- Reference 1 -->
+                <div class="reference-card">
+                    <strong>Gee Don Mark Padios</strong>
+                    <span class="role">Production Specialist, Texas Instruments</span>
+                    <span class="contact">0994-836-6915</span>
+                    <a class="contact" href="mailto:geemarkcalubia@gmail.com">geemarkcalubia@gmail.com</a>
+                </div>
+                
+                <!-- Reference 2 -->
+                <div class="reference-card">
+                    <strong>Rosel Padios</strong>
+                    <span class="role">Quality Control Specialist, Texas Instruments</span>
+                    <span class="contact">0975-148-8808</span>
+                    <a class="contact" href="mailto:iamnene888@gmail.com">iamnene888@gmail.com</a>
+                </div>
+
+                <!-- Reference 3 -->
+                <div class="reference-card">
+                    <strong>Ruel D. Bamba</strong>
+                    <span class="role">Professional Freelance Programmer</span>
+                    <span class="contact">0908-733-0750</span>
+                </div>
+
+                <!-- Reference 4 -->
+                <div class="reference-card">
+                    <strong>Ellaine Nicole Nufuar</strong>
+                    <span class="role">Esports Coordinator / Instructor 3</span>
+                    <span class="contact">0929-375-5255</span>
+                    <a class="contact" href="mailto:enbongbong@spcf.edu.ph">enbongbong@spcf.edu.ph</a>
+                </div>
+            </div>
         </section>
     </div>
 </body>
